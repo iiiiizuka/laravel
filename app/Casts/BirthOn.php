@@ -3,7 +3,6 @@
 namespace App\Casts;
 
 use App\ValueObjects\BirthOnValueObject;
-use Carbon\Carbon;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Database\Eloquent\Model;
 
