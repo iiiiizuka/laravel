@@ -25,7 +25,7 @@ class BirthOn implements CastsAttributes
      */
     public function set(Model $model, string $key, mixed $value, array $attributes): mixed
     {
-        if (empty($value)) throw new InvalidArgumentException('引数が不正です。');
+        if (empty($value)) throw new \InvalidArgumentException('引数が不正です。');
 
         return $value;
     }

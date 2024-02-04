@@ -11,7 +11,7 @@ class BirthOnValueObject
 
     public function __construct(string $value)
     {
-        if (empty($value)) throw new InvalidArgumentException('引数が不正です。');
+        if (empty($value)) throw new \InvalidArgumentException('引数が不正です。');
 
         $this->value = Carbon::parse($value);
     }
