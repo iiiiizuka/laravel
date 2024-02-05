@@ -3,7 +3,6 @@
 namespace App\ValueObjects;
 
 use Carbon\Carbon;
-use InvalidArgumentException;
 
 class BirthOnValueObject
 {
