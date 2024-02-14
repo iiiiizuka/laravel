@@ -13,6 +13,11 @@ class Post extends Model
         'content',
     ];
 
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
     public function scopeUser($query, $user_id)
     {
         return $query->where('user_id', $user_id);
