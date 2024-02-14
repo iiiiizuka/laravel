@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\User;
 
-use App\UseCases\User\Post\CreateAction;
 use App\UseCases\User\Post\DestroyAction;
 use App\UseCases\User\Post\IndexAction;
 use App\UseCases\User\Post\StoreAction;
@@ -12,7 +11,6 @@ class PostController extends Controller
 {
     public function __construct(
         private IndexAction $index_action,
-        private CreateAction $create_action,
         private StoreAction $store_action,
         private DestroyAction $destroy_action,
     ) { }
@@ -29,7 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -37,7 +35,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->store_action($request);
     }
 
     /**
@@ -45,6 +43,6 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $this->destroy_action($id);
     }
 }
