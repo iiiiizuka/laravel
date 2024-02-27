@@ -23,5 +23,7 @@ Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('lo
 Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
 Route::middleware('auth:admin')->group(function () {
+    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
     Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 });
