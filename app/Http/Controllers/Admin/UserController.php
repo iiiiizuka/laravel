@@ -15,66 +15,77 @@ use Illuminate\View\View;
 
 class UserController extends Controller
 {
-    public function __construct(
-        private IndexAction $index_action,
-        private CreateAction $create_action,
-        private StoreAction $store_action,
-        private ShowAction $show_action,
-        private EditAction $edit_action,
-        private UpdateAction $update_action,
-        private DestroyAction $destroy_action,
-    ) { }
-
     /**
      * ホーム画面
      */
-    public function index(): View
+    public function index(IndexAction $index_action): View
     {
         return view('admin.home.index', [
-            $this->index_action(),
+            $index_action(),
         ]);
     }
 
-    public function create(): View
+    /**
+     * 登録画面
+     */
+    public function create(CreateAction $create_action): View
     {
         return view('admin.home.create', [
-            $this->create_action(),
+            $create_action(),
         ]);
     }
 
-    public function store(Request $request): RedirectResponse
+    /**
+     * 登録処理
+     */
+    public function store(StoreAction $store_action, Request $request): RedirectResponse
     {
-        $this->store_action($request);
+        $store_action($request);
 
         return redirect()->route('admin.user.index');
     }
 
-    public function show(int $user_id): View
+    /**
+     * 詳細画面
+     */
+    public function show(ShowAction $show_action, int $user_id): View
     {
         return view(
             'admin.user.show',
-            $this->show_action($user_id),
+            $show_action($user_id),
         );
     }
 
-    public function edit(int $user_id): View
+    /**
+     * 編集画面
+     */
+    public function edit(EditAction $edit_action, int $user_id): View
     {
         return view(
             'admin.user.edit',
-            $this->edit_action($user_id),
+            $edit_action($user_id),
         );
     }
 
-    public function update(Request $request, int $user_id): RedirectResponse
-    {
-        $this->update_action($request);
+    /**
+     * 更新処理
+     */
+    public function update(
+        UpdateAction $update_action,
+        Request $request,
+        int $user_id
+    ): RedirectResponse {
+        $update_action($request);
 
         return redirect()->route('admin.user.show', [$user_id]);
     }
 
-    public function destroy(int $user_id): RedirectResponse
+    /**
+     * 削除処理
+     */
+    public function destroy(DestroyAction $destroy_action, int $user_id): RedirectResponse
     {
-        $this->destroy_action($user_id);
+        $destroy_action($user_id);
 
         return redirect()->route('admin.user.index');
     }
