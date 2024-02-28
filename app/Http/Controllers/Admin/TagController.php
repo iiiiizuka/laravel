@@ -12,40 +12,45 @@ use Illuminate\View\View;
 
 class TagController extends Controller
 {
-    public function __construct(
-        private IndexAction $index_action,
-        private StoreAction $store_action,
-        private UpdateAction $update_action,
-        private DestroyAction $destroy_action,
-    ) { }
-
     /**
      * ホーム画面
      */
-    public function index(): View
+    public function index(IndexAction $index_action): View
     {
         return view('admin.tag.index', [
-            $this->index_action(),
+            $index_action(),
         ]);
     }
 
-    public function store(Request $request): RedirectResponse
+    /**
+     * 登録画面
+     */
+    public function store(StoreAction $store_action, Request $request): RedirectResponse
     {
-        $this->store_action($request);
+        $store_action($request);
 
         return redirect()->route('admin.tag.index');
     }
 
-    public function update(Request $request, int $user_id): RedirectResponse
-    {
-        $this->update_action($request);
+    /**
+     * 更新処理
+     */
+    public function update(
+        UpdateAction $update_action,
+        Request $request,
+        int $user_id
+    ): RedirectResponse {
+        $update_action($request);
 
         return redirect()->route('admin.tag.index');
     }
 
-    public function destroy(int $user_id): RedirectResponse
+    /**
+     * 削除処理
+     */
+    public function destroy(DestroyAction $destroy_action, int $user_id): RedirectResponse
     {
-        $this->destroy_action($user_id);
+        $destroy_action($user_id);
 
         return redirect()->route('admin.tag.index');
     }
