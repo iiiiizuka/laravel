@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\UseCases\Admin\Tag\DestroyAction;
 use App\UseCases\Admin\Tag\IndexAction;
 use App\UseCases\Admin\Tag\StoreAction;
 use App\UseCases\Admin\Tag\UpdateAction;
-use App\UseCases\Admin\Tag\DestroyAction;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;

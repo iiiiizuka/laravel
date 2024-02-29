@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\UseCases\Admin\User\CreateAction;
+use App\UseCases\Admin\User\DestroyAction;
 use App\UseCases\Admin\User\EditAction;
 use App\UseCases\Admin\User\IndexAction;
 use App\UseCases\Admin\User\ShowAction;
 use App\UseCases\Admin\User\StoreAction;
 use App\UseCases\Admin\User\UpdateAction;
-use App\UseCases\Admin\User\DestroyAction;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -20,7 +21,7 @@ class UserController extends Controller
      */
     public function index(IndexAction $index_action): View
     {
-        return view('admin.home.index', [
+        return view('admin.user.index', [
             $index_action(),
         ]);
     }
@@ -30,7 +31,7 @@ class UserController extends Controller
      */
     public function create(CreateAction $create_action): View
     {
-        return view('admin.home.create', [
+        return view('admin.user.create', [
             $create_action(),
         ]);
     }
