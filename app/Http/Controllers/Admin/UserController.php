@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\UseCases\Admin\User\CreateAction;
 use App\UseCases\Admin\User\DestroyAction;
 use App\UseCases\Admin\User\EditAction;
 use App\UseCases\Admin\User\IndexAction;
@@ -21,19 +20,17 @@ class UserController extends Controller
      */
     public function index(IndexAction $index_action): View
     {
-        return view('admin.user.index', [
+        return view('admin.user.index',
             $index_action(),
-        ]);
+        );
     }
 
     /**
      * 登録画面
      */
-    public function create(CreateAction $create_action): View
+    public function create(): View
     {
-        return view('admin.user.create', [
-            $create_action(),
-        ]);
+        return view('admin.user.create');
     }
 
     /**
@@ -51,8 +48,7 @@ class UserController extends Controller
      */
     public function show(ShowAction $show_action, int $user_id): View
     {
-        return view(
-            'admin.user.show',
+        return view('admin.user.show',
             $show_action($user_id),
         );
     }
@@ -76,7 +72,7 @@ class UserController extends Controller
         Request $request,
         int $user_id
     ): RedirectResponse {
-        $update_action($request);
+        $update_action($request, $user_id);
 
         return redirect()->route('admin.user.show', [$user_id]);
     }
