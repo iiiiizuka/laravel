@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\UseCases\Admin\Tag\CreateAction;
 use App\UseCases\Admin\Tag\DestroyAction;
 use App\UseCases\Admin\Tag\IndexAction;
-use App\UseCases\Admin\Tag\StoreAction;
 use App\UseCases\Admin\Tag\UpdateAction;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -24,11 +24,11 @@ class TagController extends Controller
     }
 
     /**
-     * 登録画面
+     * 登録処理
      */
-    public function store(StoreAction $store_action, Request $request): RedirectResponse
+    public function create(CreateAction $create_action, Request $request): RedirectResponse
     {
-        $store_action($request);
+        $create_action($request);
 
         return redirect()->route('admin.tag.index');
     }
@@ -38,10 +38,10 @@ class TagController extends Controller
      */
     public function update(
         UpdateAction $update_action,
+        int $tag_id,
         Request $request,
-        int $user_id
     ): RedirectResponse {
-        $update_action($request);
+        $update_action($tag_id, $request);
 
         return redirect()->route('admin.tag.index');
     }
@@ -49,9 +49,9 @@ class TagController extends Controller
     /**
      * 削除処理
      */
-    public function destroy(DestroyAction $destroy_action, int $user_id): RedirectResponse
+    public function destroy(DestroyAction $destroy_action, int $tag_id): RedirectResponse
     {
-        $destroy_action($user_id);
+        $destroy_action($tag_id);
 
         return redirect()->route('admin.tag.index');
     }

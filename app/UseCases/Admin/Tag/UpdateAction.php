@@ -10,6 +10,7 @@ class UpdateAction
     public function __invoke(int $tag_id, Request $request): void
     {
         $tag = Tag::findOrFail($tag_id);
+
         $tag->create($request->all());
     }
 }

@@ -28,4 +28,5 @@ Route::middleware('auth:admin')->group(function () {
 
     Route::get('/home', [HomeController::class, 'index'])->name('home.index');
     Route::resource('user', UserController::class);
+    Route::resource('tag', TagController::class)->except(['store', 'show', 'edit']);
 });
