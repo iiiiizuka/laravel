@@ -15,7 +15,7 @@ use Illuminate\View\View;
 class TagController extends Controller
 {
     /**
-     * ホーム画面
+     * 一覧画面
      */
     public function index(IndexAction $index_action): View
     {
