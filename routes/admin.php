@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,5 +30,6 @@ Route::middleware('auth:admin')->group(function () {
 
     Route::get('/home', [HomeController::class, 'index'])->name('home.index');
     Route::resource('user', UserController::class);
+    Route::resource('post', PostController::class)->only(['index', 'destroy']);
     Route::resource('tag', TagController::class)->except(['store', 'show', 'edit']);
 });
