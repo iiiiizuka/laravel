@@ -25,10 +25,6 @@
                 <label for="email">メールアドレス:</label>
                 <input type="email" id="email" name="email">
 
-                <!-- 生年月日の選択 -->
-                <label for="birthdate">生年月日:</label>
-                <input type="date" id="birthdate" name="birth_on">
-
                 <input tyep="hidden" name="password" value="hogehoge">
 
                 <!-- 送信ボタン -->

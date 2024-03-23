@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use App\Casts\BirthOn;
+// use App\Casts\BirthOn;
 
 class User extends Authenticatable
 {
@@ -23,7 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'birth_on'
+        // 'birth_on'
     ];
 
     /**
@@ -44,7 +44,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
-        'birth_on' => BirthOn::class,
+        // 'birth_on' => BirthOn::class,
     ];
 
     public function posts(): HasMany
