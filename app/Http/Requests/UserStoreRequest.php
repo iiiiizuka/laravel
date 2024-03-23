@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-// use App\ValueObjects\BirthOnValueObject;
+use App\ValueObjects\EmailValueObject;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserStoreRequest extends FormRequest
@@ -24,8 +24,7 @@ class UserStoreRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'email' => 'required|email',
-            // 'birth_on' => BirthOnValueObject::validate(),
+            'email' => EmailValueObject::validate(),
         ];
     }
 }

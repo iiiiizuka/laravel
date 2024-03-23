@@ -22,6 +22,6 @@ class EmailValueObject
 
     public static function validate(): array
     {
-        return ['required', 'string', 'email'];
+        return ['required', 'string', 'email:strict,spoof,filter'];
     }
 }
